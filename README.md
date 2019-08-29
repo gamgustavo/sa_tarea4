@@ -5,6 +5,12 @@
 
 ![alt text](https://github.com/gamgustavo/sa_tarea4/blob/master/FLUJO.PNG)
 
+
+# EXPLICACION VIDEO
+
+[![Watch the video]](https://www.youtube.com/watch?v=DZDVZcrh_T8)
+
+
 # Clientes
 - crear_cliente
   - [ ] Methotd: POST;

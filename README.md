@@ -10,5 +10,3 @@
 
 [![](http://img.youtube.com/vi/_PunahzRwOc/0.jpg)](http://www.youtube.com/watch?v=_PunahzRwOc "")
 
-
-# Editor.md

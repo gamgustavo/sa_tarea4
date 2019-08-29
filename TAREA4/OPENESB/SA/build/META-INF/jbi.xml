@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns0="http://enterprise.netbeans.org/bpel/SA/SA" xmlns:ns1="http://tempuri.org/" xmlns:ns2="http://j2ee.netbeans.org/wsdl/SA/src/PedirUber" xmlns:ns3="http://www.sun.com/jbi/descriptor/service-unit" version="1.0">
+    <services binding-component="false">
+        <provides endpoint-name="PedirUberPortTypeRole_myRole" interface-name="ns2:PedirUberPortType" service-name="ns0:IngresoDatos">
+            <ns3:display-name>IngresoDatos</ns3:display-name>
+            <ns3:process-name>SA</ns3:process-name>
+            <ns3:file-path>SA.bpel</ns3:file-path>
+        </provides>
+        <consumes endpoint-name="viajesSoapRole_partnerRole" interface-name="ns1:viajesSoap" service-name="ns0:viaje">
+            <ns3:display-name>viaje</ns3:display-name>
+            <ns3:process-name>SA</ns3:process-name>
+            <ns3:file-path>SA.bpel</ns3:file-path>
+        </consumes>
+        <consumes endpoint-name="pilotoSoapRole_partnerRole" interface-name="ns1:pilotoSoap" service-name="ns0:Piloto">
+            <ns3:display-name>Piloto</ns3:display-name>
+            <ns3:process-name>SA</ns3:process-name>
+            <ns3:file-path>SA.bpel</ns3:file-path>
+        </consumes>
+        <consumes endpoint-name="WebService1SoapRole_partnerRole" interface-name="ns1:WebService1Soap" service-name="ns0:Persona">
+            <ns3:display-name>Persona</ns3:display-name>
+            <ns3:process-name>SA</ns3:process-name>
+            <ns3:file-path>SA.bpel</ns3:file-path>
+        </consumes>
+    </services>
+</jbi>

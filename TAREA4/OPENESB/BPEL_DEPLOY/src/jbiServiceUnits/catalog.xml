@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+
+    <system systemId="http://localhost:60353/persona.asmx?WSDL" uri="../SA/localhost_60353/persona.asmx.wsdl"/>
+    <system systemId="http://localhost:60353/viajes.asmx?WSDL" uri="../SA/localhost_60353/viajes.asmx.wsdl"/>
+    <system systemId="http://localhost:60353/piloto.asmx?WSDL" uri="../SA/localhost_60353/piloto.asmx.wsdl"/>
+    <system systemId="http://schemas.xmlsoap.org/wsdl/mime/" uri="SA/src/_references/_relative/nbproject/private/retriever/schemas.xmlsoap.org/wsdl/mime/index.xsd"/>
+    <system systemId="http://schemas.xmlsoap.org/soap/encoding/" uri="SA/src/_references/_relative/nbproject/private/retriever/schemas.xmlsoap.org/soap/encoding/index.xsd"/>
+</catalog>

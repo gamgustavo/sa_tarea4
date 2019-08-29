@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<casa xmlns="http://java.sun.com/xml/ns/casa" xmlns:ns1="BPEL_DEPLOY" xmlns:ns2="http://j2ee.netbeans.org/wsdl/SA/src/PedirUber" xmlns:ns3="http://enterprise.netbeans.org/bpel/SA/SA" xmlns:ns4="http://tempuri.org/" xmlns:xlink="http://www.w3.org/2000/xlink">
+    <endpoints>
+        <endpoint endpoint-name="casaPort1" interface-name="ns2:PedirUberPortType" name="endpoint1" service-name="ns1:BPEL_DEPLOYService1"/>
+        <endpoint display-name="IngresoDatos" endpoint-name="PedirUberPortTypeRole_myRole" file-path="SA.bpel" interface-name="ns2:PedirUberPortType" name="endpoint2" process-name="SA" service-name="ns3:IngresoDatos"/>
+        <endpoint display-name="viaje" endpoint-name="viajesSoapRole_partnerRole" file-path="SA.bpel" interface-name="ns4:viajesSoap" name="endpoint3" process-name="SA" service-name="ns3:viaje"/>
+        <endpoint display-name="Piloto" endpoint-name="pilotoSoapRole_partnerRole" file-path="SA.bpel" interface-name="ns4:pilotoSoap" name="endpoint4" process-name="SA" service-name="ns3:Piloto"/>
+        <endpoint display-name="Persona" endpoint-name="WebService1SoapRole_partnerRole" file-path="SA.bpel" interface-name="ns4:WebService1Soap" name="endpoint5" process-name="SA" service-name="ns3:Persona"/>
+    </endpoints>
+    <service-units>
+        <service-engine-service-unit artifacts-zip="SA.jar" component-name="sun-bpel-engine" defined="true" description="Represents this Service Unit" internal="true" name="BPEL_DEPLOY-SA" unit-name="SA" unknown="false" x="182" y="99">
+            <provides endpoint="endpoint2"/>
+            <consumes endpoint="endpoint3"/>
+            <consumes endpoint="endpoint4"/>
+            <consumes endpoint="endpoint5"/>
+        </service-engine-service-unit>
+        <binding-component-service-unit artifacts-zip="sun-http-binding.jar" component-name="sun-http-binding" description="Represents this Service Unit" name="BPEL_DEPLOY-sun-http-binding" unit-name="sun-http-binding">
+            <ports>
+                <port bindingType="soap" x="67" y="165">
+                    <link xlink:href="../jbiasa/BPEL_DEPLOY.wsdl#xpointer(/definitions/service[@name='BPEL_DEPLOYService1']/port[@name='casaPort1'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint1"/>
+                    <provides endpoint="endpoint1"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+    </service-units>
+    <connections>
+        <connection consumer="endpoint1" provider="endpoint2" state="new"/>
+    </connections>
+    <porttypes>
+        <link xlink:href="../jbiasa/BPEL_DEPLOY.wsdl#xpointer(/definitions/portType[@name='dummyCasaPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BPEL/BPEL.wsdl#xpointer(/definitions/portType[@name='BPELPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BPEL_DEPLOY.wsdl#xpointer(/definitions/portType[@name='dummyCasaPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/persona.asmx.wsdl#xpointer(/definitions/portType[@name='WebService1Soap'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/piloto.asmx.wsdl#xpointer(/definitions/portType[@name='pilotoSoap'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/viajes.asmx.wsdl#xpointer(/definitions/portType[@name='viajesSoap'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/PedirUber.wsdl#xpointer(/definitions/portType[@name='PedirUberPortType'])" xlink:type="simple"/>
+    </porttypes>
+    <bindings>
+        <link xlink:href="../jbiasa/BPEL_DEPLOY.wsdl#xpointer(/definitions/binding[@name='casaBinding1'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BPEL_DEPLOY.wsdl#xpointer(/definitions/binding[@name='casaBinding1'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/persona.asmx.wsdl#xpointer(/definitions/binding[@name='WebService1Soap'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/persona.asmx.wsdl#xpointer(/definitions/binding[@name='WebService1Soap12'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/piloto.asmx.wsdl#xpointer(/definitions/binding[@name='pilotoSoap'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/piloto.asmx.wsdl#xpointer(/definitions/binding[@name='pilotoSoap12'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/viajes.asmx.wsdl#xpointer(/definitions/binding[@name='viajesSoap'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/viajes.asmx.wsdl#xpointer(/definitions/binding[@name='viajesSoap12'])" xlink:type="simple"/>
+    </bindings>
+    <services>
+        <link xlink:href="../jbiasa/BPEL_DEPLOY.wsdl#xpointer(/definitions/service[@name='BPEL_DEPLOYService1'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BPEL_DEPLOY.wsdl#xpointer(/definitions/service[@name='BPEL_DEPLOYService1'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/persona.asmx.wsdl#xpointer(/definitions/service[@name='WebService1'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/piloto.asmx.wsdl#xpointer(/definitions/service[@name='piloto'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/SA/localhost_60353/viajes.asmx.wsdl#xpointer(/definitions/service[@name='viajes'])" xlink:type="simple"/>
+    </services>
+    <regions>
+        <region name="WSDL Endpoints" width="150"/>
+        <region name="JBI Modules" width="500"/>
+        <region name="External Modules" width="200"/>
+    </regions>
+</casa>

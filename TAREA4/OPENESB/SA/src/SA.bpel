@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<process
+    name="SA"
+    targetNamespace="http://enterprise.netbeans.org/bpel/SA/SA"
+    xmlns:tns="http://enterprise.netbeans.org/bpel/SA/SA"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:sxt="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Trace" 
+    xmlns:sxed="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Editor2"
+    xmlns:sxat="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Attachment"
+    xmlns:sxeh="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/ErrorHandling" xmlns:ns0="http://tempuri.org/">
+    <import namespace="http://j2ee.netbeans.org/wsdl/SA/src/PedirUber" location="PedirUber.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/piloto.asmxWrapper" location="piloto.asmxWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://tempuri.org/" location="http://localhost:60353/piloto.asmx?WSDL" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/persona.asmxWrapper" location="persona.asmxWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://tempuri.org/" location="http://localhost:60353/persona.asmx?WSDL" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/viajes.asmxWrapper" location="viajes.asmxWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://tempuri.org/" location="http://localhost:60353/viajes.asmx?WSDL" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <partnerLinks>
+        <partnerLink name="viaje" xmlns:tns="http://enterprise.netbeans.org/bpel/viajes.asmxWrapper" partnerLinkType="tns:viajesSoapLinkType" partnerRole="viajesSoapRole"/>
+        <partnerLink name="Piloto" xmlns:tns="http://enterprise.netbeans.org/bpel/piloto.asmxWrapper" partnerLinkType="tns:pilotoSoapLinkType" partnerRole="pilotoSoapRole"/>
+        <partnerLink name="Persona" xmlns:tns="http://enterprise.netbeans.org/bpel/persona.asmxWrapper" partnerLinkType="tns:WebService1SoapLinkType" partnerRole="WebService1SoapRole"/>
+        <partnerLink name="IngresoDatos" xmlns:tns="http://j2ee.netbeans.org/wsdl/SA/src/PedirUber" partnerLinkType="tns:PedirUber" myRole="PedirUberPortTypeRole"/>
+    </partnerLinks>
+    <variables>
+        <variable name="Get_precioOut" messageType="ns0:get_precioSoapOut"/>
+        <variable name="Get_precioIn" messageType="ns0:get_precioSoapIn"/>
+        <variable name="Get_uberIn1" messageType="ns0:get_uberSoapIn"/>
+        <variable name="Get_uberOut2" messageType="ns0:get_uberSoapOut"/>
+        <variable name="Create_viajeOut" xmlns:tns="http://tempuri.org/" messageType="tns:create_viajeSoapOut"/>
+        <variable name="Create_viajeIn" xmlns:tns="http://tempuri.org/" messageType="tns:create_viajeSoapIn"/>
+        <variable name="Get_uberOut1" xmlns:tns="http://tempuri.org/" messageType="tns:get_uberSoapOut"/>
+        <variable name="Get_uberOut" xmlns:tns="http://tempuri.org/" messageType="tns:get_uberSoapOut"/>
+        <variable name="Get_uberIn" xmlns:tns="http://tempuri.org/" messageType="tns:get_uberSoapIn"/>
+        <variable name="PedirUberOperationOut" xmlns:tns="http://j2ee.netbeans.org/wsdl/SA/src/PedirUber" messageType="tns:PedirUberOperationResponse"/>
+        <variable name="PedirUberOperationIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/SA/src/PedirUber" messageType="tns:PedirUberOperationRequest"/>
+    </variables>
+    <sequence>
+        <receive name="Receive1" createInstance="yes" partnerLink="IngresoDatos" operation="PedirUberOperation" xmlns:tns="http://j2ee.netbeans.org/wsdl/SA/src/PedirUber" portType="tns:PedirUberPortType" variable="PedirUberOperationIn"/>
+        <assign name="asigCliente">
+            <copy>
+                <from variable="PedirUberOperationIn" part="Id_Usuario"/>
+                <to>$Create_viajeIn.parameters/ns0:persona</to>
+            </copy>
+        </assign>
+        <invoke name="obtienePiloto" partnerLink="Piloto" operation="get_uber" portType="ns0:pilotoSoap" outputVariable="Get_uberOut2" inputVariable="Get_uberIn1"/>
+        <assign name="AsigPiloto">
+            <copy>
+                <from>$Get_uberOut2.parameters/ns0:get_uberResult</from>
+                <to>$Create_viajeIn.parameters/ns0:uber</to>
+            </copy>
+        </assign>
+        <assign name="preico">
+            <copy>
+                <from>$PedirUberOperationIn.Id_Usuario * stub();50</from>
+                <to>$Create_viajeIn.parameters/ns0:precio</to>
+            </copy>
+        </assign>
+        <invoke name="crearViaje" partnerLink="viaje" operation="create_viaje" xmlns:tns="http://tempuri.org/" portType="tns:viajesSoap" inputVariable="Create_viajeIn" outputVariable="Create_viajeOut"/>
+        <assign name="asignarResputa">
+            <copy>
+                <from>$Create_viajeOut.parameters/ns0:create_viajeResult</from>
+                <to variable="PedirUberOperationOut" part="part1"/>
+            </copy>
+            <copy>
+                <from>$Create_viajeOut.parameters/ns0:create_viajeResult</from>
+                <to>$Get_precioIn.parameters/ns0:id</to>
+            </copy>
+        </assign>
+        <invoke name="obtenerPrecio" partnerLink="viaje" operation="get_precio" portType="ns0:viajesSoap" inputVariable="Get_precioIn" outputVariable="Get_precioOut"/>
+        <assign name="asignarRespuesta">
+            <copy>
+                <from>$Get_precioOut.parameters/ns0:get_precioResult</from>
+                <to variable="PedirUberOperationOut" part="costo"/>
+            </copy>
+        </assign>
+        <reply name="Reply1" partnerLink="IngresoDatos" operation="PedirUberOperation" xmlns:tns="http://j2ee.netbeans.org/wsdl/SA/src/PedirUber" portType="tns:PedirUberPortType" variable="PedirUberOperationOut"/>
+    </sequence>
+</process>

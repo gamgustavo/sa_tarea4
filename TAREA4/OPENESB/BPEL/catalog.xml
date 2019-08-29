@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <nextCatalog catalog="nbproject/private/retriever/catalog.xml"/>
+    <system systemId="http://localhost:60353/piloto.asmx?WSDL" uri="src/localhost_60353/piloto.asmx.wsdl"/>
+    <system systemId="http://localhost:60353/persona.asmx?WSDL" uri="src/localhost_60353/persona.asmx.wsdl"/>
+    <system systemId="http://localhost:60353/viajes.asmx?WSDL" uri="src/localhost_60353/viajes.asmx.wsdl"/>
+</catalog>

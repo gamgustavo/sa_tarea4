@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="inicio">
+        <s:complexType />
+      </s:element>
+      <s:element name="inicioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inicioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_persona">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_personaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_personaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_nombre">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_nombreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_nombreResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_latitud">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_latitudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="get_latitudResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_longitu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_longituResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="get_longituResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="inicioSoapIn">
+    <wsdl:part name="parameters" element="tns:inicio" />
+  </wsdl:message>
+  <wsdl:message name="inicioSoapOut">
+    <wsdl:part name="parameters" element="tns:inicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_personaSoapIn">
+    <wsdl:part name="parameters" element="tns:get_persona" />
+  </wsdl:message>
+  <wsdl:message name="get_personaSoapOut">
+    <wsdl:part name="parameters" element="tns:get_personaResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_nombreSoapIn">
+    <wsdl:part name="parameters" element="tns:get_nombre" />
+  </wsdl:message>
+  <wsdl:message name="get_nombreSoapOut">
+    <wsdl:part name="parameters" element="tns:get_nombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_latitudSoapIn">
+    <wsdl:part name="parameters" element="tns:get_latitud" />
+  </wsdl:message>
+  <wsdl:message name="get_latitudSoapOut">
+    <wsdl:part name="parameters" element="tns:get_latitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_longituSoapIn">
+    <wsdl:part name="parameters" element="tns:get_longitu" />
+  </wsdl:message>
+  <wsdl:message name="get_longituSoapOut">
+    <wsdl:part name="parameters" element="tns:get_longituResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="inicio">
+      <wsdl:input message="tns:inicioSoapIn" />
+      <wsdl:output message="tns:inicioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_persona">
+      <wsdl:input message="tns:get_personaSoapIn" />
+      <wsdl:output message="tns:get_personaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_nombre">
+      <wsdl:input message="tns:get_nombreSoapIn" />
+      <wsdl:output message="tns:get_nombreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_latitud">
+      <wsdl:input message="tns:get_latitudSoapIn" />
+      <wsdl:output message="tns:get_latitudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_longitu">
+      <wsdl:input message="tns:get_longituSoapIn" />
+      <wsdl:output message="tns:get_longituSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="inicio">
+      <soap:operation soapAction="http://tempuri.org/inicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_persona">
+      <soap:operation soapAction="http://tempuri.org/get_persona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_nombre">
+      <soap:operation soapAction="http://tempuri.org/get_nombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_latitud">
+      <soap:operation soapAction="http://tempuri.org/get_latitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_longitu">
+      <soap:operation soapAction="http://tempuri.org/get_longitu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="inicio">
+      <soap12:operation soapAction="http://tempuri.org/inicio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_persona">
+      <soap12:operation soapAction="http://tempuri.org/get_persona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_nombre">
+      <soap12:operation soapAction="http://tempuri.org/get_nombre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_latitud">
+      <soap12:operation soapAction="http://tempuri.org/get_latitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_longitu">
+      <soap12:operation soapAction="http://tempuri.org/get_longitu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="http://localhost:60353/persona.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="http://localhost:60353/persona.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

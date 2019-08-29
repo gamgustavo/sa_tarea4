@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="create_viaje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="persona" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="create_viajeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="create_viajeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get__persona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get__personaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="get__personaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get__uber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get__uberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="get__uberResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_precio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_precioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="get_precioResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="create_viajeSoapIn">
+    <wsdl:part name="parameters" element="tns:create_viaje" />
+  </wsdl:message>
+  <wsdl:message name="create_viajeSoapOut">
+    <wsdl:part name="parameters" element="tns:create_viajeResponse" />
+  </wsdl:message>
+  <wsdl:message name="get__personaSoapIn">
+    <wsdl:part name="parameters" element="tns:get__persona" />
+  </wsdl:message>
+  <wsdl:message name="get__personaSoapOut">
+    <wsdl:part name="parameters" element="tns:get__personaResponse" />
+  </wsdl:message>
+  <wsdl:message name="get__uberSoapIn">
+    <wsdl:part name="parameters" element="tns:get__uber" />
+  </wsdl:message>
+  <wsdl:message name="get__uberSoapOut">
+    <wsdl:part name="parameters" element="tns:get__uberResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_precioSoapIn">
+    <wsdl:part name="parameters" element="tns:get_precio" />
+  </wsdl:message>
+  <wsdl:message name="get_precioSoapOut">
+    <wsdl:part name="parameters" element="tns:get_precioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="viajesSoap">
+    <wsdl:operation name="create_viaje">
+      <wsdl:input message="tns:create_viajeSoapIn" />
+      <wsdl:output message="tns:create_viajeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get__persona">
+      <wsdl:input message="tns:get__personaSoapIn" />
+      <wsdl:output message="tns:get__personaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get__uber">
+      <wsdl:input message="tns:get__uberSoapIn" />
+      <wsdl:output message="tns:get__uberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_precio">
+      <wsdl:input message="tns:get_precioSoapIn" />
+      <wsdl:output message="tns:get_precioSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="viajesSoap" type="tns:viajesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="create_viaje">
+      <soap:operation soapAction="http://tempuri.org/create_viaje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get__persona">
+      <soap:operation soapAction="http://tempuri.org/get__persona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get__uber">
+      <soap:operation soapAction="http://tempuri.org/get__uber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_precio">
+      <soap:operation soapAction="http://tempuri.org/get_precio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="viajesSoap12" type="tns:viajesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="create_viaje">
+      <soap12:operation soapAction="http://tempuri.org/create_viaje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get__persona">
+      <soap12:operation soapAction="http://tempuri.org/get__persona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get__uber">
+      <soap12:operation soapAction="http://tempuri.org/get__uber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_precio">
+      <soap12:operation soapAction="http://tempuri.org/get_precio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="viajes">
+    <wsdl:port name="viajesSoap" binding="tns:viajesSoap">
+      <soap:address location="http://localhost:60353/viajes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="viajesSoap12" binding="tns:viajesSoap12">
+      <soap12:address location="http://localhost:60353/viajes.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
